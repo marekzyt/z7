@@ -1,0 +1,77 @@
+body {
+    padding:30px;
+}
+h2 {
+    font-family:sans-serif;
+    color:#4C9ED9;
+}
+.folder-tree, .folder-tree ul {
+    padding:0;
+    margin:0;
+    list-style:none;
+}
+.folder-tree li {
+    display:block;
+    position:relative;
+    padding-left:20px;
+    padding-right:10px;
+}
+.folder-tree li:before {
+    width:1px;
+    height:100%;
+    background:#ddd;
+    position:absolute;
+    left:5px;
+    top:0;
+    content:'';
+}
+.folder-tree > li:first-child:before {
+    top:50%;
+    height:50%;
+}
+.folder-tree li .count {
+    color:#aaa;
+}
+.folder-tree li:after {
+    width:10px;
+    height:1px;
+    background:#ddd;
+    position:absolute;
+    left:5px;
+    top:50%;
+    content:'';
+}
+.folder-tree li:last-child:before {
+    height:50%;
+}
+.folder-tree li a {
+    font:12px sans-serif;
+    text-decoration:none;
+    color:#333;
+    white-space:nowrap;
+    padding-left:25px;
+    padding-right:4px;
+    line-height:26px;
+    min-height:26px;
+    display:inline-block;
+    border-radius:2px;
+    background-position:4px center;
+    background-repeat:no-repeat;
+    -moz-transition: 0.2s background-color;
+    -webkit-transition: 0.2s background-color;
+    -ms-transition: 0.2s background-color;
+    -o-transition: 0.2s background-color;
+    transition: 0.2s background-color;
+}
+.folder-tree li a:hover {
+    background-color:#eee;
+}
+.folder-tree li a.folder {
+    background-image:url(folder.png);
+}
+.folder-tree li a.file {
+    background-image:url(file.png);
+}
+.folder-tree .subfolder {
+    display: none;
+}
