@@ -56,8 +56,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 <a href="login.php">Zaloguj</a><br><br>
 <a href="rejestruj.php">Zarejestruj</a><br><br>
 
-</tbody></table>
-</article>
+
 </div>
 </body>
 </html>

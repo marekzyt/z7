@@ -67,9 +67,8 @@ if($_COOKIE['login'] == 'zalogowany')
 	$result = mysqli_query($conn, $sql);
 	$wynik = mysqli_fetch_array($result);
     
-	echo '<font color=#aeb30d>' . $wynik['name'] . '</font> jesteś już zalogowany<br><br><br>';
-				
-	//echo '<a href="pliki.php"><font color=#aeb30d> Przejdź do plików</font></a><br>';
+	echo '<font color=#aeb30d>"' . $wynik['name'] . '"</font> jesteś już zalogowany<br><br><br>';
+	echo '<a href="pliki.php"><font color=#aeb30d> Przejdź do plików</font></a><br>';
 }
 else
 {
@@ -93,9 +92,9 @@ else
 				if($blokada['blokada'] < 3)
 				{
 					$czas = time();
-					setcookie("user", "$nick", $czas+360);
-					setcookie("haslo", "$pass ", $czas+360);
-					setcookie("login", "zalogowany", $czas+360);
+					setcookie("user", "$nick", $czas+3600);
+					setcookie("haslo", "$pass ", $czas+3600);
+					setcookie("login", "zalogowany", $czas+3600);
 				
 					if($blokada['blokada'] != 0)
 					{
@@ -116,9 +115,8 @@ else
 					$result = mysqli_query($conn, $sql);
 					$wynik = mysqli_fetch_array($result);
 					echo '<a href="logout.php">Wyloguj</a><br><br>';
-					echo 'WITAJ!!! <font color=#aeb30d>' . $wynik['imie'] . '</font> zostałes poprawnie zalogowany!<br><br><br>';
-				
-					//echo '<a href="pliki.php"><font color=#aeb30d> Przejdź do plików</font></a><br>';
+					echo 'WITAJ!!! <font color=#aeb30d>' . $wynik['imie'] . '</font> zostałes poprawnie zalogowany!<br><br>';
+					echo '<a href="pliki.php"><font color=#aeb30d> Przejdź do plików</font></a><br>';
 				}
 				else
 				{
@@ -136,12 +134,9 @@ else
 				$czy = mysqli_query($conn, $sql);
 				$blokada = mysqli_fetch_array($czy);
 			
-				echo '$blokada= ' . $blokada['blokada'] . '<br>';
-				echo '$obecny2= ' . $obecny2 . '<br>';
 				if($obecny2 == 1)
 				{
 					$AktualnaBlokada = $blokada['blokada'] + 1;
-					echo '$AktualnaBlokada= ' . $AktualnaBlokada . '<br>';
 					echo '<font color=#aeb30d>Niestety podałes niepoprawne dane!</font><br/>';
 					echo '<a href="index.php">Strona główna</a>';
 					$sql = "INSERT INTO `logi`(login, powodzenie) VALUES ('" . $nick . "', 1)" ;

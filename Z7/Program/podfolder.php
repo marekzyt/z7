@@ -47,50 +47,24 @@ tr:nth-child(even){background-color: #f2f2f2}
  
 <div class="container">
 
+</form>
+
 <?php
-$servername = "localhost";
-$username = "marekzyt";
-$password = "marekzyt12345";
-$dbname = "marekzyt_zad7";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-if (!$conn)
+$GdziePodfolder = $_GET['folder'];
+if(isset($_POST['ok']))
 {
-    die("Connection failed: " . mysqli_connect_error());
+	$new = $_POST['new'];
+	mkdir ($GdziePodfolder . $new, 0777);
+	echo '<a href="pliki.php"><font color=#aeb30d> Przejdź do plików</font></a><br>';
 }
 
-if(isset($_POST["rejestruj"]))
-{
-    $nick = $_POST['nick'];
-    $pass = $_POST['pass'];
-	$imie = $_POST['imie'];
-    if(empty($nick) || empty($pass) || empty($imie)) echo '<font color=#E10000>Wpisz wszystkie pola!</font><br/>';
-    else
-    {  
-		$sql = "SELECT idusers FROM users WHERE login='" . $nick . "'";
-		$result = mysqli_query($conn, $sql);
-		if($result->num_rows == 0) 
-		{
-			$kolor = "#" . dechex(rand(0x000000,0xFFFFFF));
-			$sql = "INSERT INTO `users`(`login`, `pass`, `name`, `blokada`) VALUES ('" . $nick . "', '" . $pass .  "', '" . $inie .  "', 0)";
-			mysqli_query($conn, $sql);
-			'<a href="login.php">Przejdź do logowania</a></font>';
-			header('Location: login.php'); die();
-			
-			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DODANIE KATALOGU NOWEGO UŻYTKOWNIKA TUTAJ NALEŻY DODAĆ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		}
-		else 
-		{
-			echo '<font color=#E10000>Uzytkownik istnieje</font><br/>';  
-		}
-	}
-}
-echo '<form action="rejestruj.php" method="POST">
-Imie: <br /><input type="text" name="imie"><br />
-<br />Nick: <br /><input type="text" name="nick">
-<br />Hasło: <br /><input type="password" name="pass"><br />
-
-<input type="submit" name="rejestruj" value="Zarejestruj"></form><br/>';
+echo '<form action="podfolder.php?folder=' . $GdziePodfolder . '" method="POST">
+		Nazwa nowego folderu: <br />
+        <input type="text" name="new"><br />
+        <input type="submit" name="ok" value="Stwórz">
+        </form><br/>';
 ?>
+
 </tbody></table>
 </article>
 </div>

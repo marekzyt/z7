@@ -48,7 +48,8 @@ tr:nth-child(even){background-color: #f2f2f2}
 <div class="container">
 
 
-<?php 
+<?php
+$GdziePlik = $_GET['folder'];
 if ($_COOKIE['user'] == "")
 {
 	header('Location: index.php'); die();
@@ -57,13 +58,13 @@ echo '<a href="logout.php">Wyloguj</a><br><br>';
 
 $nick = $_COOKIE['user'];
 
-	$max_rozmiar = 1000000000;
+	$max_rozmiar = 10000;
 
 	if (is_uploaded_file($_FILES['plik']['tmp_name']))
 	{
 		if ($_FILES['plik']['size'] > $max_rozmiar) 
 		{
-			echo "Przekroczenie rozmiaru $max_rozmiar"; 
+			echo "Przekroczenie rozmiaru"; 
 		}
 		else
 		{
@@ -72,16 +73,14 @@ $nick = $_COOKIE['user'];
 			{
 				echo 'Typ: '.$_FILES['plik']['type'].'<br/>'; 
 			}
-			move_uploaded_file($_FILES['plik']['tmp_name'],$_SERVER['DOCUMENT_ROOT']. '/Z7/Chmura/'.$nick.'/'.$_FILES['plik']['name']);
-			echo $_SERVER['DOCUMENT_ROOT']. '/Z7/Chmura/'.$nick.'/'.$_FILES['plik']['name'];
+			move_uploaded_file($_FILES['plik']['tmp_name'],$_SERVER['DOCUMENT_ROOT']. '/Z7/Program/' . $GdziePlik .$_FILES['plik']['name']);
 		}
 	}
 	else 
 	{
 		echo 'Błąd przy przesyłaniu danych!';
 	}
-//////////////////////////////echo '<a href="XXXXXXXXX.php">Przejdź do swojego katalogu</a>';//////////////
-echo '<a href="wyslij.php">Wyślij nowy plik</a>';
+echo '<br><a href="pliki.php">Przeglądaj pliki</a>';
 ?>
 </tbody></table>
 </article>

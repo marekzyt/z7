@@ -22,23 +22,32 @@
 	  <li><a href="/Z4/ZAD4.php">Zadanie 4</a></li>
 	  <li><a href="/Z5/index.php">Zadanie 5</a></li>
 	  <li><a href="/Z6/ZAD6.php">Zadanie 6</a></li>
-	  <li><a href="/Z7/index.php">Zadanie 7</a></li>
+	  <li class="active"><a href="/Z7/Program/index.php">Zadanie 7</a></li>
 	  <li><a href="/Z8/index.php">Zadanie 8</a></li>
     </ul>
   </div>
 </nav>
+
+<div class="container">
+
 <?php
+$GdziePlik = $_GET['folder'];
+
 if ($_COOKIE['user'] == "")
 {
 	header('Location: index.php'); die();
 }
-echo '<a href="logout.php">Wyloguj</a><br><br>';
-?>
 
-<form action="odbierz.php" method="POST" ENCTYPE="multipart/form-data"> 
+echo '<a href="logout.php">Wyloguj</a><br>';
+echo '<a href="pliki.php">Przeglądaj pliki</a><br><br>';
+
+
+echo '<form action="odbierz.php?folder=' . $GdziePlik . '" " method="POST" ENCTYPE="multipart/form-data"> 
 <input type="file" name="plik" accept=".jpg, .jpeg, .png, .txt, .pdf"/> 
-<input type="submit" value="Wyślij plik"/> 
-
-</form>
+<input type="submit" value="Wyślij plik"/>'
+?>
+</tbody></table>
+</article>
+</div>
 </body>
 </html>

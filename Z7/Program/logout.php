@@ -39,7 +39,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 	  <li><a href="/Z4/ZAD4.php">Zadanie 4</a></li>
 	  <li><a href="/Z5/index.php">Zadanie 5</a></li>
 	  <li><a href="/Z6/ZAD6.php">Zadanie 6</a></li>
-	  <li class="active"><a href="/Z7/index.php">Zadanie 7</a></li>
+	  <li class="active"><a href="/Z7/Program/index.php">Zadanie 7</a></li>
 	  <li><a href="/Z8/index.php">Zadanie 8</a></li>
     </ul>
   </div>

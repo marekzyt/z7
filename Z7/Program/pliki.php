@@ -60,6 +60,7 @@ if ($_COOKIE['user'] == "")
 	header('Location: index.php'); die();
 }
 echo '<a href="logout.php">Wyloguj</a><br><br>';
+echo '<a href="podfolder.php?folder=Chmura/' . $nick . '/"><div class="addfolder2"></div></a><a href="wyslij.php?folder=Chmura/' . $nick . '/"><div class="addPlik2"></div></a><br><br>';
 
 function fillArrayWithFileNodes( DirectoryIterator $dir )
 {
@@ -101,7 +102,7 @@ function fillArrayWithFileNodes( DirectoryIterator $dir )
     return $data;
 }
 
-$tree = fillArrayWithFileNodes( new DirectoryIterator( 'Z7' ) );
+$tree = fillArrayWithFileNodes( new DirectoryIterator( 'Chmura/' . $nick) );
 ?>
 
 <script>
@@ -111,10 +112,10 @@ var arrayToUL = function(obj, className, id) {
         var $li = $('<li></li>');
         if (val.type == 'folder') {
             var $subUl = arrayToUL(val['files'], 'subfolder');
-            $li.append($('<a class="folder" href="'+val.path+'" class="label">'+val.name+' <span class="count">['+$subUl.children('li').length+']</span> </a>'));
+            $li.append($('<a href="podfolder.php?folder='+val.path+'/"><div class="addfolder"></div></a><a href="wyslij.php?folder='+val.path+'/"><div class="addPlik"></div></a><a class="folder" href="'+val.path+'" class="label">'+val.name+' <span class="count">['+$subUl.children('li').length+']</span> </a>'));
             $li.append($subUl);
         } else {
-                $li.append($('<a class="file" href="'+val.path+'">'+val.name+'</a>'));
+                $li.append($('<a class="file" target="_blank" href="'+val.path+'">'+val.name+'</a>'));
         }
             $ul.append($li);
     });
@@ -132,11 +133,7 @@ $(function() {
     });
 })
 </script>
-
-<h2>Poniżej czytam przykładowy katalog</h2>
  
-</tbody></table>
-</article>
 </div>
 </body>
 </html>

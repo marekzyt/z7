@@ -71,12 +71,16 @@ if(isset($_POST["rejestruj"]))
 		if($result->num_rows == 0) 
 		{
 			$kolor = "#" . dechex(rand(0x000000,0xFFFFFF));
-			$sql = "INSERT INTO `users`(`login`, `pass`, `name`, `blokada`) VALUES ('" . $nick . "', '" . $pass .  "', '" . $inie .  "', 0)";
+			$sql = "INSERT INTO `users`(`login`, `pass`, `name`, `blokada`) VALUES ('" . $nick . "', '" . $pass .  "', '" . $imie .  "', 0)";
 			mysqli_query($conn, $sql);
 			'<a href="login.php">Przejdź do logowania</a></font>';
-			header('Location: login.php'); die();
 			
-			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DODANIE KATALOGU NOWEGO UŻYTKOWNIKA TUTAJ NALEŻY DODAĆ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			
+			
+			mkdir ('Chmura/' . $nick . '/', 0777);
+			echo '<a href="pliki.php"><font color=#aeb30d> Przejdź do plików</font></a><br>';
+			
+			header('Location: login.php'); die();
 		}
 		else 
 		{

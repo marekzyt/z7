@@ -49,13 +49,10 @@ h2 {
     text-decoration:none;
     color:#333;
     white-space:nowrap;
-    padding-left:25px;
-    padding-right:4px;
     line-height:26px;
     min-height:26px;
     display:inline-block;
     border-radius:2px;
-    background-position:4px center;
     background-repeat:no-repeat;
     -moz-transition: 0.2s background-color;
     -webkit-transition: 0.2s background-color;
@@ -68,9 +65,64 @@ h2 {
 }
 .folder-tree li a.folder {
     background-image:url(folder.png);
+    padding-left:25px;
+    padding-right:4px;
+    background-position:4px center;
 }
+
+.addfolder {
+	width: 18px;
+    height: 18px;
+    background-image: url('addDirectory.png');
+	background-size: 18px 18px; 
+    display:inline-block;
+    background-repeat:no-repeat;
+    padding-left:15px;
+    padding-right:15px;
+    background-position:center;
+}
+
+.addPlik {
+	width: 18px;
+    height: 18px;
+    background-image: url('DodajPlik.png');
+	background-size: 18px 18px;
+	display:inline-block;
+    background-repeat:no-repeat;
+    padding-left:15px;
+    padding-right:15px;
+    background-position:center;
+}
+
+.addfolder2 {
+	width: 18px;
+    height: 18px;
+    background-image: url('addDirectory.png');
+	background-size: 18px 18px; 
+    display:inline-block;
+	padding-left:20px;
+    padding-right:20px;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.addPlik2 {
+	width: 18px;
+    height: 18px;
+    background-image: url('DodajPlik.png');
+	background-size: 18px 18px;
+	display:inline-block;
+	padding-left:20px;
+    padding-right:20px;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
 .folder-tree li a.file {
     background-image:url(file.png);
+    padding-left:25px;
+    padding-right:4px;
+    background-position:4px center;
 }
 .folder-tree .subfolder {
     display: none;
